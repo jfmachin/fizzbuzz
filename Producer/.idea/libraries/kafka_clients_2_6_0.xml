@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="kafka-clients-2.6.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../libs/kafka-clients-2.3.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../libs/slf4j-api-1.7.30.jar!/" />
+      <root url="jar://D:/Tech/KAFKA/FizzBuzz/libs/kafka-clients-2.3.0.jar!/" />
+      <root url="jar://D:/Tech/KAFKA/FizzBuzz/libs/slf4j-api-1.7.30.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

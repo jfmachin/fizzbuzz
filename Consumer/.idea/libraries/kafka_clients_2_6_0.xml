@@ -1,16 +1,18 @@
 <component name="libraryTable">
   <library name="kafka-clients-2.6.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../libs/kafka-clients-2.3.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../libs/slf4j-api-1.7.30.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../libs/reflection/annotations-2.0.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../libs/reflection/guava-15.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../libs/reflection/javassist-3.19.0-GA.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../libs/reflection/reflections-0.9.10.jar!/" />
+      <root url="jar://D:/Tech/KAFKA/FizzBuzz/libs/reflection/annotations-2.0.1.jar!/" />
+      <root url="jar://D:/Tech/KAFKA/FizzBuzz/libs/reflection/guava-15.0.jar!/" />
+      <root url="jar://D:/Tech/KAFKA/FizzBuzz/libs/reflection/javassist-3.19.0-GA.jar!/" />
+      <root url="jar://D:/Tech/KAFKA/FizzBuzz/libs/reflection/reflections-0.9.10.jar!/" />
+      <root url="jar://D:/Tech/KAFKA/FizzBuzz/libs/kafka-clients-2.3.0.jar!/" />
+      <root url="jar://D:/Tech/KAFKA/FizzBuzz/libs/slf4j-api-1.7.30.jar!/" />
+      <root url="jar://D:/Tech/KAFKA/FizzBuzz/libs/hamcrest-core-1.3.jar!/" />
+      <root url="jar://D:/Tech/KAFKA/FizzBuzz/libs/junit-4.13.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../libs/reflection/annotations-2.0.1.jar!/" />
+      <root url="jar://D:/Tech/KAFKA/FizzBuzz/libs/reflection/annotations-2.0.1.jar!/" />
     </SOURCES>
   </library>
 </component>
