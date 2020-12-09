@@ -1,9 +1,13 @@
+import fizzbuzz.AbstractFizzBuzz;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.reflections.Reflections;
 
+import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
-import java.util.Collections;
-import java.util.Properties;
+import java.util.*;
+
+import static java.util.stream.Collectors.toList;
 
 public class KafkaConsumerExample {
     private final static String TOPIC_NAME = "fizzbuzz";
@@ -14,16 +18,30 @@ public class KafkaConsumerExample {
         try {
             String receivedText = null;
             while (!"exit".equalsIgnoreCase(receivedText)) {
+                //kafka queued messages
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
-
                 for (ConsumerRecord<String, String> record : records) {
                     receivedText = record.value();
+                    int n = Integer.parseInt(receivedText);
                     if (receivedText != null) {
-                        IFizzBuzz.class
-                        System.out.println(receivedText);
+                        List<AbstractFizzBuzz> sortedImpl = getImplementations();
+                        for (AbstractFizzBuzz impl: sortedImpl){
+                            if(impl.match(n)){
+                                System.out.println(impl.message());
+                                break;
+                            }
+                        }
                     }
                 }
             }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
         } finally {
             consumer.close();
         }
@@ -36,5 +54,19 @@ public class KafkaConsumerExample {
         kafkaProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         kafkaProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         return new KafkaConsumer<String, String>(kafkaProps);
+    }
+
+    private static List<AbstractFizzBuzz> getImplementations() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        // reflection, getting all the implementations of fizzbuzz cases
+        Reflections reflections = new Reflections("fizzbuzz");
+        Set<Class<? extends AbstractFizzBuzz>> classes = reflections.getSubTypesOf(AbstractFizzBuzz.class);
+
+        List<AbstractFizzBuzz> list = new ArrayList<>();
+
+        for (Class<? extends AbstractFizzBuzz> i:classes)
+            list.add(i.getDeclaredConstructor().newInstance());
+
+        //sorting them
+        return list.stream().sorted().collect(toList());
     }
 }

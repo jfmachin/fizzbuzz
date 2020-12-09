@@ -1,4 +1,9 @@
-public class x5 implements IFizzBuzz{
+package fizzbuzz;
+
+public class X5 extends AbstractFizzBuzz {
+    @Override
+    public int getPriority() { return 2; }
+
     @Override
     public boolean match(int n) {
         return n % 5 == 0;
@@ -8,4 +13,5 @@ public class x5 implements IFizzBuzz{
     public String message() {
         return "Buzz";
     }
+
 }
